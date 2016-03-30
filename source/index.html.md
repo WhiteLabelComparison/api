@@ -3,12 +3,7 @@ title: API Reference
 
 language_tabs:
   - shell
-  - ruby
-  - python
-
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - php
 
 includes:
   - errors
@@ -28,18 +23,6 @@ This example API documentation page was created with [Slate](https://github.com/
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
@@ -58,23 +41,49 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# Leads
+
+## Submit a new Lead
+
+This endpoint submits a lead to White Label Comparison.
+
+### HTTP Request
+
+`POST https://portal.whitelabelcomparison.com/api/lead`
+
+### Query Parameters
+
+Parameter | Required | Validation
+--------- | -------- | ----------
+**api_key** | true | string, 12 characters
+reference | false | string, maximum 20 characters
+title | false | string, maximum 10 characters
+sex | false | string, maximum 1 character, valid options, m or f
+**first_name** | true | string, maximum 100 characters
+middle_names | false | string, maximum 100 characters
+**last_name** | true | string, maximum 100 characters
+**address1** | true | string, maximum 150 characters
+address2 | false | string, maximum 150 characters
+address3 | false | string, maximum 150 characters
+town | false | string, maximum 100 characters
+county | false | string, maximum 100 characters
+**postal_code** | true | string, maximum 12 characters, formatted as <code>XX9 9XX</code> or <code>XX99 9XX</code>
+date_of_birth | false | date, formatted as <code>YYYY-MM-DD</code>
+**home_phone** | true | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
+**mobile_phone** | true | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
+work_phone | false | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
+email | false | string, maximum 200 characters, must be a valid E-Mail address
+note | false | longtext
+
+<aside class="notice">Note: <code>home_phone</code> and <code>mobile_phone</code> are required however only one of the two numbers are required. As long as a value is provided in one of these two parameters the request will be successful.</aside>
+
+
+
+
+
+
 
 ## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
 
 ```shell
 curl "http://example.com/api/kittens"
@@ -106,7 +115,7 @@ This endpoint retrieves all kittens.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://portal.whitelabelcomparison.com/api/lead`
 
 ### Query Parameters
 
@@ -120,20 +129,6 @@ Remember — a happy kitten is an authenticated kitten!
 </aside>
 
 ## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
 
 ```shell
 curl "http://example.com/api/kittens/2"
