@@ -1,9 +1,5 @@
 ---
-title: API Reference
-
-language_tabs:
-  - shell
-  - php
+title: White Label Comparison API Reference
 
 includes:
   - errors
@@ -13,37 +9,48 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Welcome to the documentation for the White Label Comparison API. This documentation currently only covers Version 1 of the API and will be updated once Version 2 is available for use.
 
 # Authentication
 
-> To authorize, use this code:
+In this current Version 1 of the API all authentication is performed by simply passing an API key parameter along with your request. This is usually in the following format.
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+Parameter | Required | Validation
+--------- | -------- | ----------
+**api_key** | true | string, 12 characters
 
-> Make sure to replace `meowmeowmeow` with your API key.
+<aside class="notice">Note: This current form of authentication is planned to change in Version 2 of the API. Once this has changed you will be notified, and it will only be important to change over once Version 1 has been deprecated.</aside>
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+Your API key should have been provided to you when signing up for the service, if not, please get in contact and we will arrange your Key to be sent to you.
 
 # Leads
 
 ## Submit a new Lead
+
+> On success a JSON result structured as below is returned:
+
+```json
+{ 
+  "success": true, 
+  "data": 
+  { 
+    "lead_id": "55"
+  } 
+}
+```
+
+> On failure a JSON result structured as below is returned:
+
+```json
+{ 
+  "success": false, 
+  "message": "Validation failed.", 
+  "errors": 
+  { 
+    "first_name": [ "The first name field is required." ] 
+  } 
+}
+```
 
 This endpoint submits a lead to White Label Comparison.
 
@@ -76,88 +83,3 @@ email | false | string, maximum 200 characters, must be a valid E-Mail address
 note | false | longtext
 
 <aside class="notice">Note: <code>home_phone</code> and <code>mobile_phone</code> are required however only one of the two numbers are required. As long as a value is provided in one of these two parameters the request will be successful.</aside>
-
-
-
-
-
-
-
-## Get All Kittens
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET https://portal.whitelabelcomparison.com/api/lead`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
