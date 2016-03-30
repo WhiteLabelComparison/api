@@ -281,6 +281,74 @@
 
 <aside class="notice">Note: <code>home_phone</code> and <code>mobile_phone</code> are required however only one of the two numbers are required. As long as a value is provided in one of these two parameters the request will be successful.</aside>
 
+<h3 id="optional-product-specific-parameters">Optional Product Specific Parameters</h3>
+
+<h3 id="debt">Debt</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>debt_amount</td>
+<td>float(10,2)</td>
+<td>Total amount of debt the lead owes</td>
+</tr>
+<tr>
+<td>debt_creditors</td>
+<td>integer</td>
+<td>Number of creditors the debt is owed to</td>
+</tr>
+<tr>
+<td>debt_di</td>
+<td>float(10,2)</td>
+<td>The disposable income the lead has</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-updates-on-a-lead">Get updates on a Lead</h2>
+
+<blockquote>
+<p>On success a JSON result structured as below is returned:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"lead_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11111</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"submission_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"current_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Converted To Client"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"current_status_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-23"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint displays details of a lead that has been submitted.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://portal.whitelabelcomparison.com/api/lead/status/*lead_id*</code></p>
+
+<aside class="warning">Please note, you need to replace <code>*lead_id*</code> with the Lead ID that was returned when submitting the lead.</aside>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Validation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>api_key</strong></td>
+<td>true</td>
+<td>string, 12 characters</td>
+</tr>
+</tbody></table>
+
           <h1 id="errors">Errors</h1>
 
 <p>The White Label Comparison API uses the following error codes:</p>
