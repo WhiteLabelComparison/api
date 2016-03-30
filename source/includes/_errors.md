@@ -10,6 +10,6 @@ Error Code | Meaning
 403 | Forbidden -- Your API key does not provide access to this feature
 404 | Not Found -- The endpoint you requested was not found
 410 | Gone -- The item requested has been removed from our servers
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
+429 | Too Many Requests -- You have sent too many requests, in a short period!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
