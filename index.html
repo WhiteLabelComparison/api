@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -88,10 +86,12 @@
   color: #90a959;
 }
     </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -102,8 +102,7 @@
       <img src="images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="php">php</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -111,10 +110,6 @@
         <ul class="search-results"></ul>
       <div id="toc">
       </div>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
@@ -132,14 +127,6 @@
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
@@ -159,19 +146,125 @@ curl <span class="s2">"api_endpoint_here"</span>
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-<h1 id="kittens">Kittens</h1>
+<h1 id="leads">Leads</h1>
+
+<h2 id="submit-a-new-lead">Submit a new Lead</h2>
+
+<p>This endpoint submits a lead to White Label Comparison.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://portal.whitelabelcomparison.com/api/lead</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Validation</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>api_key</strong></td>
+<td>true</td>
+<td>string, 12 characters</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>false</td>
+<td>string, maximum 20 characters</td>
+</tr>
+<tr>
+<td>title</td>
+<td>false</td>
+<td>string, maximum 10 characters</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>false</td>
+<td>string, maximum 1 character, valid options, m or f</td>
+</tr>
+<tr>
+<td><strong>first_name</strong></td>
+<td>true</td>
+<td>string, maximum 100 characters</td>
+</tr>
+<tr>
+<td>middle_names</td>
+<td>false</td>
+<td>string, maximum 100 characters</td>
+</tr>
+<tr>
+<td><strong>last_name</strong></td>
+<td>true</td>
+<td>string, maximum 100 characters</td>
+</tr>
+<tr>
+<td><strong>address1</strong></td>
+<td>true</td>
+<td>string, maximum 150 characters</td>
+</tr>
+<tr>
+<td>address2</td>
+<td>false</td>
+<td>string, maximum 150 characters</td>
+</tr>
+<tr>
+<td>address3</td>
+<td>false</td>
+<td>string, maximum 150 characters</td>
+</tr>
+<tr>
+<td>town</td>
+<td>false</td>
+<td>string, maximum 100 characters</td>
+</tr>
+<tr>
+<td>county</td>
+<td>false</td>
+<td>string, maximum 100 characters</td>
+</tr>
+<tr>
+<td><strong>postal_code</strong></td>
+<td>true</td>
+<td>string, maximum 12 characters, formatted as <code>XX9 9XX</code> or <code>XX99 9XX</code></td>
+</tr>
+<tr>
+<td>date_of_birth</td>
+<td>false</td>
+<td>date, formatted as <code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><strong>home_phone</strong></td>
+<td>true</td>
+<td>string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based</td>
+</tr>
+<tr>
+<td><strong>mobile_phone</strong></td>
+<td>true</td>
+<td>string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based</td>
+</tr>
+<tr>
+<td>work_phone</td>
+<td>false</td>
+<td>string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based</td>
+</tr>
+<tr>
+<td>email</td>
+<td>false</td>
+<td>string, maximum 200 characters, must be a valid E-Mail address</td>
+</tr>
+<tr>
+<td>note</td>
+<td>false</td>
+<td>longtext</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">Note: <code>home_phone</code> and <code>mobile_phone</code> are required however only one of the two numbers are required. As long as a value is provided in one of these two parameters the request will be successful.</aside>
 
 <h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -201,7 +294,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
+<p><code class="prettyprint">GET https://portal.whitelabelcomparison.com/api/lead</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -229,16 +322,6 @@ Remember — a happy kitten is an authenticated kitten!
 </aside>
 
 <h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre>
@@ -339,8 +422,7 @@ Remember — a happy kitten is an authenticated kitten!
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="php">php</a>
           </div>
       </div>
     </div>
