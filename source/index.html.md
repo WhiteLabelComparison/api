@@ -83,3 +83,43 @@ email | false | string, maximum 200 characters, must be a valid E-Mail address
 note | false | longtext
 
 <aside class="notice">Note: <code>home_phone</code> and <code>mobile_phone</code> are required however only one of the two numbers are required. As long as a value is provided in one of these two parameters the request will be successful.</aside>
+
+### Optional Product Specific Parameters
+
+### Debt
+
+Parameter | Type | Description
+--------- | ---- | -----------
+debt_amount | float(10,2) | Total amount of debt the lead owes
+debt_creditors | integer | Number of creditors the debt is owed to
+debt_di | float(10,2) | The disposable income the lead has
+
+## Get updates on a Lead
+
+> On success a JSON result structured as below is returned:
+
+```json
+{
+  "success": true,
+  "data": {
+    "lead_id": 11111,
+    "submission_date": "2016-03-23",
+    "current_status": "Converted To Client",
+    "current_status_date": "2016-03-23"
+  }
+}
+```
+
+This endpoint displays details of a lead that has been submitted.
+
+### HTTP Request
+
+`GET https://portal.whitelabelcomparison.com/api/lead/status/*lead_id*`
+
+<aside class="warning">Please note, you need to replace <code>*lead_id*</code> with the Lead ID that was returned when submitting the lead.</aside>
+
+### Query Parameters
+
+Parameter | Required | Validation
+--------- | -------- | ----------
+**api_key** | true | string, 12 characters
