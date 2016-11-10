@@ -90,11 +90,31 @@ note | false | longtext
 
 ### Debt
 
-Parameter | Type | Description
---------- | ---- | -----------
-debt_amount | float(10,2) | Total amount of debt the lead owes
-debt_creditors | integer | Number of creditors the debt is owed to
-debt_di | float(10,2) | The disposable income the lead has
+Parameter | Type | Description | Extra Information
+--------- | ---- | ----------- | -----------------
+debt_amount | float(10,2) | Total amount of debt the lead owes |
+debt_creditors | integer | Number of creditors the debt is owed to |
+debt_di | float(10,2) | The disposable income the lead has |
+
+### Life Insurance
+
+Parameter | Type | Description | Extra Information
+--------- | ---- | ----------- | -----------------
+life_smoker | string(1) | Is the Lead a Smoker? | Accepted options are 'Y' or 'N'
+life_application_type | string(1) | Is the application single or joint | Accepted options are 'S' or 'J'
+life_cover_amount | float(10,2) | Total amount of cover required | 
+life_duration | integer | The length of the cover | 
+
+### Secured Loans
+
+Parameter | Type | Description | Extra Information
+--------- | ---- | ----------- | -----------------
+secured_amount | float(10,2) | The total amount of loan required | 
+secured_loan_duration | integer | What is the length of the loan | Value must be submitted in months
+secured_mortgage_duration | integer | How long is remaining on the mortgage | Value must be submitted in years
+secured_property_value | float(10,2) |What is the value of the property | 
+secured_employment_status | string | The current employment status | 
+secured_loan_purpose | string | The purpose of the loan | 
 
 ## Get updates on a Lead
 
