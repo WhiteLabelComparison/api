@@ -2,8 +2,6 @@
 title: White Label Comparison API Reference
 
 includes:
-  - autopostform
-  - postback
   - errors
 
 search: true

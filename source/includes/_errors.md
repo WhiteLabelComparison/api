@@ -12,4 +12,4 @@ Error Code | Meaning
 410 | Gone -- The item requested has been removed from our servers
 429 | Too Many Requests -- You have sent too many requests, in a short period!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
