@@ -81,7 +81,22 @@ date_of_birth | false | date, formatted as <code>YYYY-MM-DD</code>
 **home_phone** | true | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
 **mobile_phone** | true | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
 work_phone | false | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
-email | false | string, maximum 200 characters, must be a valid E-Mail address
+partner_title | false | string, maximum 10 characters
+partner_sex | false | string, maximum 1 character, valid options, m or f
+partner_first_name | false | string, maximum 100 characters
+partner_middle_names | false | string, maximum 100 characters
+partner_last_name | false | string, maximum 100 characters
+partner_address1 | false| string, maximum 150 characters
+partner_address2 | false | string, maximum 150 characters
+partner_address3 | false | string, maximum 150 characters
+partner_town | false | string, maximum 100 characters
+partner_county | false | string, maximum 100 characters
+partner_postal_code | false | string, maximum 12 characters, formatted as <code>XX9 9XX</code> or <code>XX99 9XX</code>
+partner_date_of_birth | false | date, formatted as <code>YYYY-MM-DD</code>
+partner_home_phone | false | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
+partner_mobile_phone | false | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
+partner_work_phone | false | string, maximum 12 characters, must have a leading 0 and not start with 44 or +44 if the number is UK based
+partner_email | false | string, maximum 200 characters, must be a valid E-Mail address
 note | false | longtext
 
 <aside class="notice">Note: <code>home_phone</code> and <code>mobile_phone</code> are required however only one of the two numbers are required. As long as a value is provided in one of these two parameters the request will be successful.</aside>
